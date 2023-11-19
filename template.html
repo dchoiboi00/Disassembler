@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Disassembly Web Page for <%= program_name %></h1>
+
+    <h2>objdump Result:</h2>
+    <pre>
+    <%= obj_dump_result %>
+  </pre
+    >
+
+    <h2>llvm-dwarfdump Result:</h2>
+    <pre>
+    <%= dwarfdump_result %>
+  </pre
+    >
+  </body>
+</html>

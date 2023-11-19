@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Disassembly Web Page for ascii</h1>
+
+    <h2>objdump Result:</h2>
+    <pre>
+    
+ascii:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000401000 <_init>:
+  401000:	f3 0f 1e fa          	endbr64
+  401004:	48 83 ec 08          	sub    $0x8,%rsp
+  401008:	48 8b 05 d1 2f 00 00 	mov    0x2fd1(%rip),%rax        # 403fe0 <__gmon_start__@Base>
+  40100f:	48 85 c0             	test   %rax,%rax
+  401012:	74 02                	je     401016 <_init+0x16>
+  401014:	ff d0                	call   *%rax
+  401016:	48 83 c4 08          	add    $0x8,%rsp
+  40101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000401020 <printf@plt-0x10>:
+  401020:	ff 35 ca 2f 00 00    	push   0x2fca(%rip)        # 403ff0 <_GLOBAL_OFFSET_TABLE_+0x8>
+  401026:	ff 25 cc 2f 00 00    	jmp    *0x2fcc(%rip)        # 403ff8 <_GLOBAL_OFFSET_TABLE_+0x10>
+  40102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401030 <printf@plt>:
+  401030:	ff 25 ca 2f 00 00    	jmp    *0x2fca(%rip)        # 404000 <printf@GLIBC_2.2.5>
+  401036:	68 00 00 00 00       	push   $0x0
+  40103b:	e9 e0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401040 <putc@plt>:
+  401040:	ff 25 c2 2f 00 00    	jmp    *0x2fc2(%rip)        # 404008 <putc@GLIBC_2.2.5>
+  401046:	68 01 00 00 00       	push   $0x1
+  40104b:	e9 d0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401050 <cfmakeraw@plt>:
+  401050:	ff 25 ba 2f 00 00    	jmp    *0x2fba(%rip)        # 404010 <cfmakeraw@GLIBC_2.2.5>
+  401056:	68 02 00 00 00       	push   $0x2
+  40105b:	e9 c0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401060 <tcgetattr@plt>:
+  401060:	ff 25 b2 2f 00 00    	jmp    *0x2fb2(%rip)        # 404018 <tcgetattr@GLIBC_2.2.5>
+  401066:	68 03 00 00 00       	push   $0x3
+  40106b:	e9 b0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401070 <tcsetattr@plt>:
+  401070:	ff 25 aa 2f 00 00    	jmp    *0x2faa(%rip)        # 404020 <tcsetattr@GLIBC_2.2.5>
+  401076:	68 04 00 00 00       	push   $0x4
+  40107b:	e9 a0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401080 <exit@plt>:
+  401080:	ff 25 a2 2f 00 00    	jmp    *0x2fa2(%rip)        # 404028 <exit@GLIBC_2.2.5>
+  401086:	68 05 00 00 00       	push   $0x5
+  40108b:	e9 90 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401090 <getc@plt>:
+  401090:	ff 25 9a 2f 00 00    	jmp    *0x2f9a(%rip)        # 404030 <getc@GLIBC_2.2.5>
+  401096:	68 06 00 00 00       	push   $0x6
+  40109b:	e9 80 ff ff ff       	jmp    401020 <_init+0x20>
+
+00000000004010a0 <__ctype_b_loc@plt>:
+  4010a0:	ff 25 92 2f 00 00    	jmp    *0x2f92(%rip)        # 404038 <__ctype_b_loc@GLIBC_2.3>
+  4010a6:	68 07 00 00 00       	push   $0x7
+  4010ab:	e9 70 ff ff ff       	jmp    401020 <_init+0x20>
+
+Disassembly of section .text:
+
+00000000004010b0 <_start>:
+  4010b0:	f3 0f 1e fa          	endbr64
+  4010b4:	31 ed                	xor    %ebp,%ebp
+  4010b6:	49 89 d1             	mov    %rdx,%r9
+  4010b9:	5e                   	pop    %rsi
+  4010ba:	48 89 e2             	mov    %rsp,%rdx
+  4010bd:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+  4010c1:	50                   	push   %rax
+  4010c2:	54                   	push   %rsp
+  4010c3:	45 31 c0             	xor    %r8d,%r8d
+  4010c6:	31 c9                	xor    %ecx,%ecx
+  4010c8:	48 c7 c7 bf 11 40 00 	mov    $0x4011bf,%rdi
+  4010cf:	ff 15 03 2f 00 00    	call   *0x2f03(%rip)        # 403fd8 <__libc_start_main@GLIBC_2.34>
+  4010d5:	f4                   	hlt
+  4010d6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  4010dd:	00 00 00 
+
+00000000004010e0 <_dl_relocate_static_pie>:
+  4010e0:	f3 0f 1e fa          	endbr64
+  4010e4:	c3                   	ret
+  4010e5:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  4010ec:	00 00 00 
+  4010ef:	90                   	nop
+
+00000000004010f0 <deregister_tm_clones>:
+  4010f0:	b8 60 44 40 00       	mov    $0x404460,%eax
+  4010f5:	48 3d 60 44 40 00    	cmp    $0x404460,%rax
+  4010fb:	74 13                	je     401110 <deregister_tm_clones+0x20>
+  4010fd:	b8 00 00 00 00       	mov    $0x0,%eax
+  401102:	48 85 c0             	test   %rax,%rax
+  401105:	74 09                	je     401110 <deregister_tm_clones+0x20>
+  401107:	bf 60 44 40 00       	mov    $0x404460,%edi
+  40110c:	ff e0                	jmp    *%rax
+  40110e:	66 90                	xchg   %ax,%ax
+  401110:	c3                   	ret
+  401111:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  401118:	00 00 00 00 
+  40111c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401120 <register_tm_clones>:
+  401120:	be 60 44 40 00       	mov    $0x404460,%esi
+  401125:	48 81 ee 60 44 40 00 	sub    $0x404460,%rsi
+  40112c:	48 89 f0             	mov    %rsi,%rax
+  40112f:	48 c1 ee 3f          	shr    $0x3f,%rsi
+  401133:	48 c1 f8 03          	sar    $0x3,%rax
+  401137:	48 01 c6             	add    %rax,%rsi
+  40113a:	48 d1 fe             	sar    %rsi
+  40113d:	74 11                	je     401150 <register_tm_clones+0x30>
+  40113f:	b8 00 00 00 00       	mov    $0x0,%eax
+  401144:	48 85 c0             	test   %rax,%rax
+  401147:	74 07                	je     401150 <register_tm_clones+0x30>
+  401149:	bf 60 44 40 00       	mov    $0x404460,%edi
+  40114e:	ff e0                	jmp    *%rax
+  401150:	c3                   	ret
+  401151:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  401158:	00 00 00 00 
+  40115c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401160 <__do_global_dtors_aux>:
+  401160:	f3 0f 1e fa          	endbr64
+  401164:	80 3d 0d 33 00 00 00 	cmpb   $0x0,0x330d(%rip)        # 404478 <completed.0>
+  40116b:	75 13                	jne    401180 <__do_global_dtors_aux+0x20>
+  40116d:	55                   	push   %rbp
+  40116e:	48 89 e5             	mov    %rsp,%rbp
+  401171:	e8 7a ff ff ff       	call   4010f0 <deregister_tm_clones>
+  401176:	c6 05 fb 32 00 00 01 	movb   $0x1,0x32fb(%rip)        # 404478 <completed.0>
+  40117d:	5d                   	pop    %rbp
+  40117e:	c3                   	ret
+  40117f:	90                   	nop
+  401180:	c3                   	ret
+  401181:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  401188:	00 00 00 00 
+  40118c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401190 <frame_dummy>:
+  401190:	f3 0f 1e fa          	endbr64
+  401194:	eb 8a                	jmp    401120 <register_tm_clones>
+
+0000000000401196 <show_char>:
+  401196:	48 83 ec 08          	sub    $0x8,%rsp
+  40119a:	89 fe                	mov    %edi,%esi
+  40119c:	48 63 c7             	movslq %edi,%rax
+  40119f:	4c 8b 04 c5 60 40 40 	mov    0x404060(,%rax,8),%r8
+  4011a6:	00 
+  4011a7:	89 f9                	mov    %edi,%ecx
+  4011a9:	89 fa                	mov    %edi,%edx
+  4011ab:	bf 10 20 40 00       	mov    $0x402010,%edi
+  4011b0:	b8 00 00 00 00       	mov    $0x0,%eax
+  4011b5:	e8 76 fe ff ff       	call   401030 <printf@plt>
+  4011ba:	48 83 c4 08          	add    $0x8,%rsp
+  4011be:	c3                   	ret
+
+00000000004011bf <main>:
+  4011bf:	41 55                	push   %r13
+  4011c1:	41 54                	push   %r12
+  4011c3:	55                   	push   %rbp
+  4011c4:	53                   	push   %rbx
+  4011c5:	48 81 ec 88 00 00 00 	sub    $0x88,%rsp
+  4011cc:	83 ff 01             	cmp    $0x1,%edi
+  4011cf:	0f 8e 1d 01 00 00    	jle    4012f2 <main+0x133>
+  4011d5:	41 89 fd             	mov    %edi,%r13d
+  4011d8:	49 89 f4             	mov    %rsi,%r12
+  4011db:	48 8b 46 08          	mov    0x8(%rsi),%rax
+  4011df:	80 38 2d             	cmpb   $0x2d,(%rax)
+  4011e2:	74 21                	je     401205 <main+0x46>
+  4011e4:	e8 b7 fe ff ff       	call   4010a0 <__ctype_b_loc@plt>
+  4011e9:	48 89 c5             	mov    %rax,%rbp
+  4011ec:	49 8d 5c 24 08       	lea    0x8(%r12),%rbx
+  4011f1:	41 8d 45 fe          	lea    -0x2(%r13),%eax
+  4011f5:	4d 8d 64 c4 10       	lea    0x10(%r12,%rax,8),%r12
+  4011fa:	41 bd 10 00 00 00    	mov    $0x10,%r13d
+  401200:	e9 9c 00 00 00       	jmp    4012a1 <main+0xe2>
+  401205:	bb 00 00 00 00       	mov    $0x0,%ebx
+  40120a:	89 df                	mov    %ebx,%edi
+  40120c:	e8 85 ff ff ff       	call   401196 <show_char>
+  401211:	83 c3 01             	add    $0x1,%ebx
+  401214:	81 fb 80 00 00 00    	cmp    $0x80,%ebx
+  40121a:	75 ee                	jne    40120a <main+0x4b>
+  40121c:	e9 62 01 00 00       	jmp    401383 <main+0x1c4>
+  401221:	49 8d 71 01          	lea    0x1(%r9),%rsi
+  401225:	b9 08 00 00 00       	mov    $0x8,%ecx
+  40122a:	41 80 79 01 78       	cmpb   $0x78,0x1(%r9)
+  40122f:	75 0c                	jne    40123d <main+0x7e>
+  401231:	eb 03                	jmp    401236 <main+0x77>
+  401233:	4c 89 ce             	mov    %r9,%rsi
+  401236:	48 83 c6 01          	add    $0x1,%rsi
+  40123a:	44 89 e9             	mov    %r13d,%ecx
+  40123d:	4c 8b 45 00          	mov    0x0(%rbp),%r8
+  401241:	bf 00 00 00 00       	mov    $0x0,%edi
+  401246:	eb 18                	jmp    401260 <main+0xa1>
+  401248:	f6 c4 01             	test   $0x1,%ah
+  40124b:	74 31                	je     40127e <main+0xbf>
+  40124d:	0f be c2             	movsbl %dl,%eax
+  401250:	83 e8 37             	sub    $0x37,%eax
+  401253:	39 c8                	cmp    %ecx,%eax
+  401255:	7f 2f                	jg     401286 <main+0xc7>
+  401257:	0f af f9             	imul   %ecx,%edi
+  40125a:	01 c7                	add    %eax,%edi
+  40125c:	48 83 c6 01          	add    $0x1,%rsi
+  401260:	0f b6 16             	movzbl (%rsi),%edx
+  401263:	48 0f be c2          	movsbq %dl,%rax
+  401267:	41 0f b7 04 40       	movzwl (%r8,%rax,2),%eax
+  40126c:	f6 c4 10             	test   $0x10,%ah
+  40126f:	74 15                	je     401286 <main+0xc7>
+  401271:	f6 c4 08             	test   $0x8,%ah
+  401274:	74 d2                	je     401248 <main+0x89>
+  401276:	0f be c2             	movsbl %dl,%eax
+  401279:	83 e8 30             	sub    $0x30,%eax
+  40127c:	eb d5                	jmp    401253 <main+0x94>
+  40127e:	0f be c2             	movsbl %dl,%eax
+  401281:	83 e8 57             	sub    $0x57,%eax
+  401284:	eb cd                	jmp    401253 <main+0x94>
+  401286:	84 d2                	test   %dl,%dl
+  401288:	75 3b                	jne    4012c5 <main+0x106>
+  40128a:	83 ff 7f             	cmp    $0x7f,%edi
+  40128d:	7f 4f                	jg     4012de <main+0x11f>
+  40128f:	e8 02 ff ff ff       	call   401196 <show_char>
+  401294:	48 83 c3 08          	add    $0x8,%rbx
+  401298:	4c 39 e3             	cmp    %r12,%rbx
+  40129b:	0f 84 e2 00 00 00    	je     401383 <main+0x1c4>
+  4012a1:	4c 8b 0b             	mov    (%rbx),%r9
+  4012a4:	41 0f b6 01          	movzbl (%r9),%eax
+  4012a8:	3c 30                	cmp    $0x30,%al
+  4012aa:	0f 84 71 ff ff ff    	je     401221 <main+0x62>
+  4012b0:	3c 78                	cmp    $0x78,%al
+  4012b2:	0f 84 7b ff ff ff    	je     401233 <main+0x74>
+  4012b8:	4c 89 ce             	mov    %r9,%rsi
+  4012bb:	b9 0a 00 00 00       	mov    $0xa,%ecx
+  4012c0:	e9 78 ff ff ff       	jmp    40123d <main+0x7e>
+  4012c5:	bf 28 20 40 00       	mov    $0x402028,%edi
+  4012ca:	b8 00 00 00 00       	mov    $0x0,%eax
+  4012cf:	e8 5c fd ff ff       	call   401030 <printf@plt>
+  4012d4:	bf 01 00 00 00       	mov    $0x1,%edi
+  4012d9:	e8 a2 fd ff ff       	call   401080 <exit@plt>
+  4012de:	4c 89 ce             	mov    %r9,%rsi
+  4012e1:	bf 2f 20 40 00       	mov    $0x40202f,%edi
+  4012e6:	b8 00 00 00 00       	mov    $0x0,%eax
+  4012eb:	e8 40 fd ff ff       	call   401030 <printf@plt>
+  4012f0:	eb a2                	jmp    401294 <main+0xd5>
+  4012f2:	48 8d 5c 24 40       	lea    0x40(%rsp),%rbx
+  4012f7:	48 89 de             	mov    %rbx,%rsi
+  4012fa:	bf 02 00 00 00       	mov    $0x2,%edi
+  4012ff:	e8 5c fd ff ff       	call   401060 <tcgetattr@plt>
+  401304:	48 89 e7             	mov    %rsp,%rdi
+  401307:	b9 0f 00 00 00       	mov    $0xf,%ecx
+  40130c:	48 89 de             	mov    %rbx,%rsi
+  40130f:	f3 a5                	rep movsl %ds:(%rsi),%es:(%rdi)
+  401311:	48 89 e7             	mov    %rsp,%rdi
+  401314:	e8 37 fd ff ff       	call   401050 <cfmakeraw@plt>
+  401319:	48 89 e2             	mov    %rsp,%rdx
+  40131c:	be 00 00 00 00       	mov    $0x0,%esi
+  401321:	bf 02 00 00 00       	mov    $0x2,%edi
+  401326:	e8 45 fd ff ff       	call   401070 <tcsetattr@plt>
+  40132b:	41 bc ff ff ff ff    	mov    $0xffffffff,%r12d
+  401331:	bd ff ff ff ff       	mov    $0xffffffff,%ebp
+  401336:	eb 1d                	jmp    401355 <main+0x196>
+  401338:	89 df                	mov    %ebx,%edi
+  40133a:	e8 57 fe ff ff       	call   401196 <show_char>
+  40133f:	48 8b 35 1a 31 00 00 	mov    0x311a(%rip),%rsi        # 404460 <stdout@GLIBC_2.2.5>
+  401346:	bf 0d 00 00 00       	mov    $0xd,%edi
+  40134b:	e8 f0 fc ff ff       	call   401040 <putc@plt>
+  401350:	41 89 ec             	mov    %ebp,%r12d
+  401353:	89 dd                	mov    %ebx,%ebp
+  401355:	48 8b 3d 14 31 00 00 	mov    0x3114(%rip),%rdi        # 404470 <stdin@GLIBC_2.2.5>
+  40135c:	e8 2f fd ff ff       	call   401090 <getc@plt>
+  401361:	83 e0 7f             	and    $0x7f,%eax
+  401364:	89 c3                	mov    %eax,%ebx
+  401366:	41 39 c4             	cmp    %eax,%r12d
+  401369:	75 cd                	jne    401338 <main+0x179>
+  40136b:	39 c5                	cmp    %eax,%ebp
+  40136d:	75 c9                	jne    401338 <main+0x179>
+  40136f:	48 8d 54 24 40       	lea    0x40(%rsp),%rdx
+  401374:	be 00 00 00 00       	mov    $0x0,%esi
+  401379:	bf 02 00 00 00       	mov    $0x2,%edi
+  40137e:	e8 ed fc ff ff       	call   401070 <tcsetattr@plt>
+  401383:	b8 00 00 00 00       	mov    $0x0,%eax
+  401388:	48 81 c4 88 00 00 00 	add    $0x88,%rsp
+  40138f:	5b                   	pop    %rbx
+  401390:	5d                   	pop    %rbp
+  401391:	41 5c                	pop    %r12
+  401393:	41 5d                	pop    %r13
+  401395:	c3                   	ret
+
+Disassembly of section .fini:
+
+0000000000401398 <_fini>:
+  401398:	f3 0f 1e fa          	endbr64
+  40139c:	48 83 ec 08          	sub    $0x8,%rsp
+  4013a0:	48 83 c4 08          	add    $0x8,%rsp
+  4013a4:	c3                   	ret
+
+  </pre
+    >
+
+    <h2>llvm-dwarfdump Result:</h2>
+    <pre>
+    ascii:	file format elf64-x86-64
+
+.debug_line contents:
+debug_line[0x00000000]
+Line table prologue:
+    total_length: 0x00000398
+          format: DWARF32
+         version: 5
+    address_size: 8
+ seg_select_size: 0
+ prologue_length: 0x000001c3
+ min_inst_length: 1
+max_ops_per_inst: 1
+ default_is_stmt: 1
+       line_base: -5
+      line_range: 14
+     opcode_base: 13
+standard_opcode_lengths[DW_LNS_copy] = 0
+standard_opcode_lengths[DW_LNS_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_advance_line] = 1
+standard_opcode_lengths[DW_LNS_set_file] = 1
+standard_opcode_lengths[DW_LNS_set_column] = 1
+standard_opcode_lengths[DW_LNS_negate_stmt] = 0
+standard_opcode_lengths[DW_LNS_set_basic_block] = 0
+standard_opcode_lengths[DW_LNS_const_add_pc] = 0
+standard_opcode_lengths[DW_LNS_fixed_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_set_prologue_end] = 0
+standard_opcode_lengths[DW_LNS_set_epilogue_begin] = 0
+standard_opcode_lengths[DW_LNS_set_isa] = 1
+include_directories[  0] = "/u/ychoi42/CSC254/Project4/Project4-shared"
+include_directories[  1] = "/usr/include/bits"
+include_directories[  2] = "/usr/lib/gcc/x86_64-redhat-linux/13/include"
+include_directories[  3] = "/usr/include/bits/types"
+include_directories[  4] = "/usr/include"
+include_directories[  5] = "/usr/include/sys"
+include_directories[  6] = "/usr/include/gnu"
+file_names[  0]:
+           name: "ascii.c"
+      dir_index: 0
+file_names[  1]:
+           name: "ascii.c"
+      dir_index: 0
+file_names[  2]:
+           name: "stdio.h"
+      dir_index: 1
+file_names[  3]:
+           name: "stddef.h"
+      dir_index: 2
+file_names[  4]:
+           name: "types.h"
+      dir_index: 1
+file_names[  5]:
+           name: "struct_FILE.h"
+      dir_index: 3
+file_names[  6]:
+           name: "FILE.h"
+      dir_index: 3
+file_names[  7]:
+           name: "stdio.h"
+      dir_index: 4
+file_names[  8]:
+           name: "termios.h"
+      dir_index: 1
+file_names[  9]:
+           name: "termios-struct.h"
+      dir_index: 1
+file_names[ 10]:
+           name: "termios.h"
+      dir_index: 4
+file_names[ 11]:
+           name: "stdlib.h"
+      dir_index: 4
+file_names[ 12]:
+           name: "ctype.h"
+      dir_index: 4
+file_names[ 13]:
+           name: "stdc-predef.h"
+      dir_index: 4
+file_names[ 14]:
+           name: "libc-header-start.h"
+      dir_index: 1
+file_names[ 15]:
+           name: "features.h"
+      dir_index: 4
+file_names[ 16]:
+           name: "features-time64.h"
+      dir_index: 4
+file_names[ 17]:
+           name: "wordsize.h"
+      dir_index: 1
+file_names[ 18]:
+           name: "timesize.h"
+      dir_index: 1
+file_names[ 19]:
+           name: "cdefs.h"
+      dir_index: 5
+file_names[ 20]:
+           name: "long-double.h"
+      dir_index: 1
+file_names[ 21]:
+           name: "stubs.h"
+      dir_index: 6
+file_names[ 22]:
+           name: "stubs-64.h"
+      dir_index: 6
+file_names[ 23]:
+           name: "waitflags.h"
+      dir_index: 1
+file_names[ 24]:
+           name: "waitstatus.h"
+      dir_index: 1
+file_names[ 25]:
+           name: "floatn.h"
+      dir_index: 1
+file_names[ 26]:
+           name: "floatn-common.h"
+      dir_index: 1
+file_names[ 27]:
+           name: "types.h"
+      dir_index: 5
+file_names[ 28]:
+           name: "typesizes.h"
+      dir_index: 1
+file_names[ 29]:
+           name: "time64.h"
+      dir_index: 1
+file_names[ 30]:
+           name: "clock_t.h"
+      dir_index: 3
+file_names[ 31]:
+           name: "clockid_t.h"
+      dir_index: 3
+file_names[ 32]:
+           name: "time_t.h"
+      dir_index: 3
+file_names[ 33]:
+           name: "timer_t.h"
+      dir_index: 3
+file_names[ 34]:
+           name: "stdint-intn.h"
+      dir_index: 1
+file_names[ 35]:
+           name: "endian.h"
+      dir_index: 4
+file_names[ 36]:
+           name: "endian.h"
+      dir_index: 1
+file_names[ 37]:
+           name: "endianness.h"
+      dir_index: 1
+file_names[ 38]:
+           name: "byteswap.h"
+      dir_index: 1
+file_names[ 39]:
+           name: "uintn-identity.h"
+      dir_index: 1
+file_names[ 40]:
+           name: "select.h"
+      dir_index: 5
+file_names[ 41]:
+           name: "select.h"
+      dir_index: 1
+file_names[ 42]:
+           name: "sigset_t.h"
+      dir_index: 3
+file_names[ 43]:
+           name: "__sigset_t.h"
+      dir_index: 3
+file_names[ 44]:
+           name: "struct_timeval.h"
+      dir_index: 3
+file_names[ 45]:
+           name: "struct_timespec.h"
+      dir_index: 3
+file_names[ 46]:
+           name: "pthreadtypes.h"
+      dir_index: 1
+file_names[ 47]:
+           name: "thread-shared-types.h"
+      dir_index: 1
+file_names[ 48]:
+           name: "pthreadtypes-arch.h"
+      dir_index: 1
+file_names[ 49]:
+           name: "atomic_wide_counter.h"
+      dir_index: 1
+file_names[ 50]:
+           name: "struct_mutex.h"
+      dir_index: 1
+file_names[ 51]:
+           name: "struct_rwlock.h"
+      dir_index: 1
+file_names[ 52]:
+           name: "alloca.h"
+      dir_index: 4
+file_names[ 53]:
+           name: "stdlib-bsearch.h"
+      dir_index: 1
+file_names[ 54]:
+           name: "stdlib-float.h"
+      dir_index: 1
+file_names[ 55]:
+           name: "stdarg.h"
+      dir_index: 2
+file_names[ 56]:
+           name: "__fpos_t.h"
+      dir_index: 3
+file_names[ 57]:
+           name: "__mbstate_t.h"
+      dir_index: 3
+file_names[ 58]:
+           name: "__fpos64_t.h"
+      dir_index: 3
+file_names[ 59]:
+           name: "__FILE.h"
+      dir_index: 3
+file_names[ 60]:
+           name: "stdio_lim.h"
+      dir_index: 1
+file_names[ 61]:
+           name: "termios-c_cc.h"
+      dir_index: 1
+file_names[ 62]:
+           name: "termios-c_iflag.h"
+      dir_index: 1
+file_names[ 63]:
+           name: "termios-c_oflag.h"
+      dir_index: 1
+file_names[ 64]:
+           name: "termios-baud.h"
+      dir_index: 1
+file_names[ 65]:
+           name: "termios-c_cflag.h"
+      dir_index: 1
+file_names[ 66]:
+           name: "termios-c_lflag.h"
+      dir_index: 1
+file_names[ 67]:
+           name: "termios-tcflow.h"
+      dir_index: 1
+file_names[ 68]:
+           name: "termios-misc.h"
+      dir_index: 1
+file_names[ 69]:
+           name: "ttydefaults.h"
+      dir_index: 5
+file_names[ 70]:
+           name: "unistd.h"
+      dir_index: 4
+file_names[ 71]:
+           name: "posix_opt.h"
+      dir_index: 1
+file_names[ 72]:
+           name: "environments.h"
+      dir_index: 1
+file_names[ 73]:
+           name: "confname.h"
+      dir_index: 1
+file_names[ 74]:
+           name: "getopt_posix.h"
+      dir_index: 1
+file_names[ 75]:
+           name: "getopt_core.h"
+      dir_index: 1
+file_names[ 76]:
+           name: "unistd_ext.h"
+      dir_index: 1
+file_names[ 77]:
+           name: "locale_t.h"
+      dir_index: 3
+file_names[ 78]:
+           name: "__locale_t.h"
+      dir_index: 3
+
+Address            Line   Column File   ISA Discriminator Flags
+------------------ ------ ------ ------ --- ------------- -------------
+0x0000000000401196     36     30      1   0             0  is_stmt
+0x0000000000401196     36     30      1   0             0 
+0x000000000040119c     37      5      1   0             0  is_stmt
+0x00000000004011b0     37      5      1   0             0 
+0x00000000004011ba     38      1      1   0             0 
+0x00000000004011bf     40     33      1   0             0  is_stmt
+0x00000000004011bf     40     33      1   0             0 
+0x00000000004011cc     41      5      1   0             0  is_stmt
+0x00000000004011cc     42      5      1   0             0  is_stmt
+0x00000000004011cc     43      5      1   0             0  is_stmt
+0x00000000004011cc     44      5      1   0             0  is_stmt
+0x00000000004011cc     44      8      1   0             0 
+0x00000000004011db     45      9      1   0             0  is_stmt
+0x00000000004011db     45     13      1   0             0 
+0x00000000004011df     45     12      1   0             0 
+0x00000000004011e4     68     26      1   0             0 
+0x00000000004011e9     68     26      1   0             0 
+0x00000000004011fa     68     26      1   0             0 
+0x00000000004011fa     60     26      1   0             0 
+0x0000000000401200     60     26      1   0             0 
+0x0000000000401205     60     26      1   0             0 
+0x0000000000401205     46     26      1   0             0 
+0x000000000040120a     47     13      1   0             0  is_stmt
+0x0000000000401211     46     54      1   0             3  is_stmt
+0x0000000000401214     46     39      1   0             1  is_stmt
+0x0000000000401221     54     21      1   0             0  is_stmt
+0x0000000000401221     55     21      1   0             0  is_stmt
+0x0000000000401221     55     23      1   0             0 
+0x0000000000401225     56     21      1   0             0  is_stmt
+0x0000000000401225     54     26      1   0             0 
+0x000000000040122a     56     24      1   0             0 
+0x0000000000401233     52     17      1   0             0 
+0x0000000000401236     60     21      1   0             0  is_stmt
+0x0000000000401236     61     21      1   0             0  is_stmt
+0x0000000000401236     61     23      1   0             0 
+0x000000000040123a     62     21      1   0             0  is_stmt
+0x000000000040123a     60     26      1   0             0 
+0x000000000040123d     68     26      1   0             1 
+0x0000000000401248     72     26      1   0             0  is_stmt
+0x0000000000401248     72     29      1   0             1 
+0x000000000040124d     73     25      1   0             0  is_stmt
+0x000000000040124d     73     29      1   0             0 
+0x0000000000401250     73     27      1   0             0 
+0x0000000000401253     76     21      1   0             0  is_stmt
+0x0000000000401253     76     24      1   0             0 
+0x0000000000401257     78     21      1   0             0  is_stmt
+0x0000000000401257     78     36      1   0             0 
+0x000000000040125a     78     29      1   0             0 
+0x000000000040125c     78     29      1   0             0 
+0x000000000040125c     66     25      1   0             0  is_stmt
+0x0000000000401260     66     17      1   0             0  is_stmt
+0x0000000000401260     66     17      1   0             1  is_stmt
+0x0000000000401260     67     21      1   0             0  is_stmt
+0x0000000000401260     68     21      1   0             0  is_stmt
+0x0000000000401260     68     26      1   0             1 
+0x000000000040126c     68     24      1   0             1 
+0x0000000000401271     70     21      1   0             0  is_stmt
+0x0000000000401271     70     24      1   0             1 
+0x0000000000401276     71     25      1   0             0  is_stmt
+0x0000000000401276     71     29      1   0             0 
+0x0000000000401279     71     27      1   0             0 
+0x000000000040127c     71     27      1   0             0 
+0x000000000040127e     75     25      1   0             0  is_stmt
+0x000000000040127e     75     29      1   0             0 
+0x0000000000401281     75     27      1   0             0 
+0x0000000000401284     75     27      1   0             0 
+0x0000000000401286     75     27      1   0             0 
+0x0000000000401286     80     17      1   0             0  is_stmt
+0x0000000000401286     80     20      1   0             0 
+0x000000000040128a     84     17      1   0             0  is_stmt
+0x000000000040128a     84     20      1   0             0 
+0x000000000040128f     85     21      1   0             0  is_stmt
+0x0000000000401294     85     21      1   0             0 
+0x0000000000401294     49     40      1   0             2  is_stmt
+0x0000000000401294     49     31      1   0             1  is_stmt
+0x0000000000401298     49     31      1   0             1 
+0x00000000004012a1     50     17      1   0             0  is_stmt
+0x00000000004012a1     50     23      1   0             0 
+0x00000000004012a4     51     17      1   0             0  is_stmt
+0x00000000004012a4     52     17      1   0             0  is_stmt
+0x00000000004012a4     52     25      1   0             0 
+0x00000000004012a8     52     17      1   0             0 
+0x00000000004012c5     81     21      1   0             0  is_stmt
+0x00000000004012ca     81     21      1   0             0 
+0x00000000004012d4     82     21      1   0             0  is_stmt
+0x00000000004012de     87     22      1   0             0  is_stmt
+0x00000000004012e1     87     22      1   0             0 
+0x00000000004012e6     87     22      1   0             0 
+0x00000000004012f0     87     22      1   0             0 
+0x00000000004012f2     87     22      1   0             0 
+0x00000000004012f2     91      9      1   0             0  is_stmt
+0x00000000004012f2     91     16      1   0             0 
+0x00000000004012fa     91     16      1   0             0 
+0x00000000004012ff     91     16      1   0             0 
+0x0000000000401304     92      9      1   0             0  is_stmt
+0x0000000000401304     92     13      1   0             0 
+0x0000000000401311     93      9      1   0             0  is_stmt
+0x0000000000401319     95      9      1   0             0  is_stmt
+0x0000000000401319     95     16      1   0             0 
+0x000000000040132b     96      9      1   0             0  is_stmt
+0x000000000040132b     43     31      1   0             0 
+0x0000000000401331     43     20      1   0             0 
+0x0000000000401336     96     15      1   0             0 
+0x0000000000401338     97     13      1   0             0  is_stmt
+0x0000000000401338     98     13      1   0             0  is_stmt
+0x0000000000401338     99     13      1   0             0  is_stmt
+0x000000000040133f    100     13      1   0             0  is_stmt
+0x000000000040133f     82      1      2   0             0  is_stmt
+0x000000000040133f     84      3      2   0             0  is_stmt
+0x000000000040133f     84     10      2   0             0 
+0x0000000000401350     84     10      2   0             0 
+0x0000000000401350     97     22      1   0             0 
+0x0000000000401353     98     18      1   0             0 
+0x0000000000401355     96     57      1   0             0  is_stmt
+0x0000000000401355     47      1      2   0             0  is_stmt
+0x0000000000401355     49      3      2   0             0  is_stmt
+0x0000000000401355     49     10      2   0             0 
+0x0000000000401361     96     26      1   0             1 
+0x0000000000401366     96     57      1   0             1 
+0x000000000040136f    102      9      1   0             0  is_stmt
+0x000000000040136f    102     16      1   0             0 
+0x0000000000401383    104      1      1   0             0 
+0x0000000000401396    104      1      1   0             0  end_sequence
+
+
+  </pre
+    >
+  </body>
+</html>
