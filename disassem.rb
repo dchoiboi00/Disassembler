@@ -8,6 +8,7 @@ if program_name == nil
     exit
 end
 
+# making commands
 # Output: objdump.txt
 # Command: objdump -d ARGV[0]
 objdump = "objdump -d #{program_name}"
@@ -15,6 +16,8 @@ objdump = "objdump -d #{program_name}"
 # Output: llvm-dwarfdump.txt
 # Command: llvm-dwarfdump --debug-line ARGV[0]
 dwarfdump = "llvm-dwarfdump --debug-line #{program_name}"
+
+# execute shell commands
 obj = `#{objdump}`
 dwarf = `#{dwarfdump}`
 # puts "This is objDump result:"
@@ -25,6 +28,9 @@ dwarf = `#{dwarfdump}`
 
 # Part 1: source code scraper
 # open source code file
+# TODO:
+# -Think about the sclick="" for each button
+
 begin
   file = File.open("#{program_name}.c", "r")
 rescue Errno::ENOENT
@@ -48,7 +54,7 @@ file.each_line do |line|
       ""
     end
 
-  finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s1\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+  finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
   
   lineNum = lineNum + 1
 
@@ -57,6 +63,8 @@ file.close
 # puts finalSourceCode
 
 # source code scraper done 
+
+
 
 # TODO
 # Part 2: assembly code scraper 
@@ -75,8 +83,19 @@ File.open(objdump_file, 'w') do |file|
 end
 
 # use obj and dwarf to come up with html 
+# dwarf and obj are string
+# dwarf gives me the line of source code and assembly address
 
 finalAssemblyCode = ""
+
+puts dwarf
+
+# The table at the end of dwarf, we want the first two columns of that table
+# Address is sorted by assembly code address (column 1)
+# 
+
+
+
 
 
 
