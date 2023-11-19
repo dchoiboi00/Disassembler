@@ -58,13 +58,13 @@ file.each_line do |line|
   cleaned_line = line.chomp 
   finalSourceCode << "<button>&nbsp;&nbsp;#{lineNum}</button> <span id=\"s1\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
   lineNum = lineNum + 1
-
 end
-
-html_template.gsub!('{line_placeholder}', finalSourceCode)
-# puts finalSourceCode
-
 file.close
+
+
+# puts replace placeholder from template with what we just cameup with
+html_template.gsub!('{source_code_placeholder}', finalSourceCode)
+# puts finalSourceCode
 
 # html_template.gsub!('<%= program_name %>', program_name)
 # html_template.gsub!('<%= obj_dump_result %>', File.read(objdump_file))
