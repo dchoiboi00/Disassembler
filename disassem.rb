@@ -51,16 +51,24 @@ rescue Errno::ENOENT
 end
 
 lineNum = 1
+finalSourceCode = ""
 file.each_line do |line|
-    puts "#{lineNum}#{line}"
-    lineNum = lineNum + 1
+    # puts "#{lineNum}#{line}"
+  # remove new line from line
+  cleaned_line = line.chomp 
+  finalSourceCode << "<button>&nbsp;&nbsp;#{lineNum}</button> <span id=\"s1\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+  lineNum = lineNum + 1
+
 end
+
+html_template.gsub!('{line_placeholder}', finalSourceCode)
+# puts finalSourceCode
 
 file.close
 
-html_template.gsub!('<%= program_name %>', program_name)
-html_template.gsub!('<%= obj_dump_result %>', File.read(objdump_file))
-html_template.gsub!('<%= dwarfdump_result %>', File.read(dwarfdump_file))
+# html_template.gsub!('<%= program_name %>', program_name)
+# html_template.gsub!('<%= obj_dump_result %>', File.read(objdump_file))
+# html_template.gsub!('<%= dwarfdump_result %>', File.read(dwarfdump_file))
 
 # open file we created and write the template do it.
 File.open(html_file, 'w') do |file|
