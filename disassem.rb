@@ -22,7 +22,6 @@ dwarf = `#{dwarfdump}`
 # puts "This is dwarf result:"
 # puts dwarf
 
-
 # make files
 dwarfdump_file = "llvm-dwarfdump.txt"
 objdump_file = "objdump.txt"
@@ -36,14 +35,29 @@ File.open(objdump_file, 'w') do |file|
   file.puts obj
 end
 
-
 # create a corresponding html file
 html_file = "#{program_name}_disassem.html"
 
 # use the template in the directory
 html_template = File.read("template.html")
 
-# putting stuff in template
+# putting stuff in template:
+# open source code file
+begin
+  file = File.open("#{program_name}.c", "r")
+rescue Errno::ENOENT
+  puts "Source code file not found"
+  exit
+end
+
+lineNum = 1
+file.each_line do |line|
+    puts "#{lineNum}#{line}"
+    lineNum = lineNum + 1
+end
+
+file.close
+
 html_template.gsub!('<%= program_name %>', program_name)
 html_template.gsub!('<%= obj_dump_result %>', File.read(objdump_file))
 html_template.gsub!('<%= dwarfdump_result %>', File.read(dwarfdump_file))
@@ -52,6 +66,10 @@ html_template.gsub!('<%= dwarfdump_result %>', File.read(dwarfdump_file))
 File.open(html_file, 'w') do |file|
   file.puts html_template
 end
+
+# 
+
+
 
 
 
