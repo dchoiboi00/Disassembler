@@ -88,11 +88,33 @@ end
 
 finalAssemblyCode = ""
 
-puts dwarf
+# puts dwarf
 
-# The table at the end of dwarf, we want the first two columns of that table
+# The table at the end of dwarf, we want the first two columns of that table, go through the whole table
 # Address is sorted by assembly code address (column 1)
 # 
+
+
+File.open("#{dwarfdump_file}", "r") do |file|
+
+  at_table = false
+  file.each_line do |line|
+
+
+    if at_table
+      puts "#{line}"
+      # 
+    end
+
+    
+    if line.start_with?("------------------")
+      # lines_starting_with_dash << line
+      # set scanning to true
+      at_table = true
+      
+    end
+  end
+end
 
 
 
