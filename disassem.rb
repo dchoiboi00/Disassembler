@@ -38,28 +38,28 @@ rescue Errno::ENOENT
   exit
 end
 
-lineNum = 1
-finalSourceCode = ""
-file.each_line do |line|
-  # puts "#{lineNum}#{line}"
-  # remove new line from line
-  cleaned_line = line.chomp 
+# lineNum = 1
+# finalSourceCode = ""
+# file.each_line do |line|
+#   # puts "#{lineNum}#{line}"
+#   # remove new line from line
+#   cleaned_line = line.chomp 
 
-  spacesBeforeNum =
-    if lineNum < 10
-      "&nbsp;&nbsp;"
-    elsif lineNum < 100
-      "&nbsp;"
-    else
-      ""
-    end
+#   spacesBeforeNum =
+#     if lineNum < 10
+#       "&nbsp;&nbsp;"
+#     elsif lineNum < 100
+#       "&nbsp;"
+#     else
+#       ""
+#     end
 
-  finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+#   finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
   
-  lineNum = lineNum + 1
+#   lineNum = lineNum + 1
 
-end
-file.close
+# end
+# file.close
 # puts finalSourceCode
 
 # source code scraper done 
@@ -94,18 +94,41 @@ finalAssemblyCode = ""
 # Address is sorted by assembly code address (column 1)
 # 
 
+number_array = []
+objdump_start_line = 0
+
+
+source_to_assembly_map = Hash.new
+assembly_info_map = Hash.new
+
 
 File.open("#{dwarfdump_file}", "r") do |file|
 
   at_table = false
   file.each_line do |line|
 
+    # puts "#{line}"
 
+
+    
     if at_table
+
+      # parse line by space
+      line_array = line.split
+      number_array.push(line_array[1].to_i)
+
+      # 0-address 1-source
+
+      for 
+      
+      hash_map[line_array[1].to_i] = []
+
+
+      
       puts "#{line}"
+
       # 
     end
-
     
     if line.start_with?("------------------")
       # lines_starting_with_dash << line
@@ -113,8 +136,44 @@ File.open("#{dwarfdump_file}", "r") do |file|
       at_table = true
       
     end
+
   end
 end
+
+lenghtOfArray = number_array.length
+
+# puts "Number Array here: #{number_array} #{lenghtOfArray}"
+
+
+lineNum = 1
+finalSourceCode = ""
+file.each_line do |line|
+  # puts "#{lineNum}#{line}"
+  # remove new line from line
+  cleaned_line = line.chomp 
+
+  spacesBeforeNum =
+    if lineNum < 10
+      "&nbsp;&nbsp;"
+    elsif lineNum < 100
+      "&nbsp;"
+    else
+      ""
+    end
+
+  if number_array.include?(lineNum)
+    finalSourceCode << "<button onclick=\"sclick(\'s#{lineNum}\',\'a1\')\">#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+
+  else 
+    finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+  end
+
+  lineNum = lineNum + 1
+
+  
+
+end
+file.close
 
 
 
