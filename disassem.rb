@@ -31,12 +31,12 @@ dwarf = `#{dwarfdump}`
 # TODO:
 # -Think about the sclick="" for each button
 
-begin
-  file = File.open("#{program_name}.c", "r")
-rescue Errno::ENOENT
-  puts "Source code file not found"
-  exit
-end
+# begin
+#   file = File.open("#{program_name}.c", "r")
+# rescue Errno::ENOENT
+#   puts "Source code file not found"
+#   exit
+# end
 
 # lineNum = 1
 # finalSourceCode = ""
@@ -109,8 +109,6 @@ File.open("#{dwarfdump_file}", "r") do |file|
 
     # puts "#{line}"
 
-
-    
     if at_table
 
       # parse line by space
@@ -121,9 +119,9 @@ File.open("#{dwarfdump_file}", "r") do |file|
 
       for 
       
-      hash_map[line_array[1].to_i] = []
-
-
+        hash_map[line_array[1].to_i] = []
+      
+      
       
       puts "#{line}"
 
@@ -141,9 +139,16 @@ File.open("#{dwarfdump_file}", "r") do |file|
 end
 
 lenghtOfArray = number_array.length
-
 # puts "Number Array here: #{number_array} #{lenghtOfArray}"
 
+
+# Source code section making
+begin
+  file = File.open("#{program_name}.c", "r")
+rescue Errno::ENOENT
+  puts "Source code file not found"
+  exit
+end
 
 lineNum = 1
 finalSourceCode = ""
