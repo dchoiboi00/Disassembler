@@ -95,47 +95,99 @@ finalAssemblyCode = ""
 # 
 
 number_array = []
-objdump_start_line = 0
+all_functions_array = []
+all_func_addresses = []
+function_array = [] # contains the functions we need to display
 
-
-source_to_assembly_map = Hash.new
-assembly_info_map = Hash.new
-
-
-File.open("#{dwarfdump_file}", "r") do |file|
-
-  at_table = false
-  file.each_line do |line|
-
-    # puts "#{line}"
-
-    if at_table
-
-      # parse line by space
-      line_array = line.split
-      number_array.push(line_array[1].to_i)
-
-      # 0-address 1-source
-
-      for 
-      
-        hash_map[line_array[1].to_i] = []
-      
-      
-      
-      puts "#{line}"
-
-      # 
-    end
-    
-    if line.start_with?("------------------")
-      # lines_starting_with_dash << line
-      # set scanning to true
-      at_table = true
-      
-    end
-
+# Create an array of all function + addresses from objdump
+obj.each_line do |line|
+  if line.match(/[\d+]* <[^>]*>:/)
+    all_functions_array.push(line)
+    all_func_addresses.append(line.split[0][-6..-1])
   end
+end
+
+dwarf_lines = []
+dwarf.each_line do |line|
+  if line.match(/^0x/)
+    dwarf_lines.push(line)
+  end
+end
+
+# Find functions
+dwarf_lines.each do |line|
+  # parse line by space
+  line_array = line.split
+  source_line_num = line_array[1].to_i
+  address = line_array[0][-6..-1]
+  
+  number_array.push(source_line_num)
+
+  # check if address is a function in objdump
+  all_func_addresses.each_with_index do |curr_addy, index|
+    if curr_addy == address
+      if !function_array.include?(all_functions_array[index])
+        function_array.push(all_functions_array[index])
+      end
+    end
+  end
+end
+
+# store hashmap: func_name -> [assemb_line1, assemb_line2, ...]
+assem_code_by_func = {}
+File.open("#{objdump_file}", "r") do |file|
+  function_array.each do |func|
+    assem_code_by_func[func] = []
+    nextline = file.gets
+    while nextline != func
+      nextline = file.gets
+    end
+    nextline = file.gets
+    while nextline.match(/\s+\w{6}:/)  # match "  401196: ..."
+      assem_code_by_func[func].push(nextline)
+      nextline = file.gets
+    end
+  end
+end
+
+# testing, it works!
+function_array.each do |func|
+  puts func
+  puts assem_code_by_func[func]
+end
+
+# build a1 -> 401235
+# build 401235 -> [a1, code]
+assem_line_to_address = {}
+assem_address_to_line_and_code = {}
+index = 1
+function_array.each do |func|
+  assem_code_by_func[func].each do |line|
+    aline = "a" + index.to_s
+    address = line[2..7]
+    assem_line_to_address[aline] = address
+    assem_address_to_line_and_code[address] = [aline, line]
+    index = index + 1
+  end
+end
+
+
+source_to_assembly_map = {}
+assembly_info_map = {}
+
+# map s36 -> [a1, a2]
+# map a1 -> [s36]
+dwarf_lines.each_with_index do |line, index|
+  address = line.split[0][-6..-1]
+  sline = line.split[1]
+  puts address
+  puts sline
+  
+end
+
+function_array.each do |func|
+  puts func
+  puts assem_address_to_line_and_code["401196"]
 end
 
 lenghtOfArray = number_array.length
