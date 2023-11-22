@@ -20,54 +20,7 @@ dwarfdump = "llvm-dwarfdump --debug-line #{program_name}"
 # execute shell commands
 obj = `#{objdump}`
 dwarf = `#{dwarfdump}`
-# puts "This is objDump result:"
-# puts obj
-# puts "This is dwarf result:"
-# puts dwarf
 
-
-# Part 1: source code scraper
-# open source code file
-# TODO:
-# -Think about the sclick="" for each button
-
-# begin
-#   file = File.open("#{program_name}.c", "r")
-# rescue Errno::ENOENT
-#   puts "Source code file not found"
-#   exit
-# end
-
-# lineNum = 1
-# finalSourceCode = ""
-# file.each_line do |line|
-#   # puts "#{lineNum}#{line}"
-#   # remove new line from line
-#   cleaned_line = line.chomp 
-
-#   spacesBeforeNum =
-#     if lineNum < 10
-#       "&nbsp;&nbsp;"
-#     elsif lineNum < 100
-#       "&nbsp;"
-#     else
-#       ""
-#     end
-
-#   finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
-  
-#   lineNum = lineNum + 1
-
-# end
-# file.close
-# puts finalSourceCode
-
-# source code scraper done 
-
-
-
-# TODO
-# Part 2: assembly code scraper 
 
 # make the txt files needed
 dwarfdump_file = "llvm-dwarfdump.txt"
@@ -82,18 +35,7 @@ File.open(objdump_file, 'w') do |file|
   file.puts obj
 end
 
-# use obj and dwarf to come up with html 
-# dwarf and obj are string
-# dwarf gives me the line of source code and assembly address
-
-finalAssemblyCode = ""
-
-# puts dwarf
-
-# The table at the end of dwarf, we want the first two columns of that table, go through the whole table
-# Address is sorted by assembly code address (column 1)
-# 
-
+# Parse function names
 number_array = []
 all_functions_array = []
 all_func_addresses = []
@@ -128,10 +70,6 @@ dwarf_lines.each do |line|
     line.gsub!(/\s#{replace_num}/, last_sline)
   end
 end
-
-# Testing: replace file 2 line_num columns with previous file 1's line num
-puts "New dwarfdump, replaced file 2 line nums"
-puts dwarf_lines, "\n"
 
 # Find functions
 dwarf_lines.each do |line|
@@ -169,11 +107,6 @@ File.open("#{objdump_file}", "r") do |file|
   end
 end
 
-# testing, it works!
-# function_array.each do |func|
-#   puts func
-#   puts assem_code_by_func[func]
-# end
 
 # build a1 -> 401235
 # build 401235 -> [a1, code]
@@ -192,6 +125,7 @@ end
 max_aline = index - 1
 
 
+# Begin mapping sline -> aline and aline -> sline
 aline_to_slines = {}
 sline_to_alines = {}
 prev_sline = ""
@@ -294,16 +228,7 @@ dwarf_lines.each_with_index do |line, index|
   prev_aline = aline
 end
 
-# UP TO HERE, MAPPING DONE
-puts "Source to assembly mappings"
-puts sline_to_alines
-puts "\nAssembly to source mappings"
-puts aline_to_slines
-
-
-
 lenghtOfArray = number_array.length
-# puts "Number Array here: #{number_array} #{lenghtOfArray}"
 
 
 # Source code section making
@@ -367,11 +292,8 @@ assembly_HTML = ""
 assembly_count = 1
 function_array.each do |func|
   # insert html element here
-  # puts func
-  puts func.chomp
   assembly_HTML << "#{func.chomp.gsub!(/</, '&lt;').gsub!(/>/, '&gt;')}\n\n"
-  # puts assem_code_by_func[func]
-  # puts assem_address_to_line_and_code["401196"]
+
   
   # for each line in assem_code_by_func[func]
   assem_code_by_func[func].each do |line|
@@ -402,11 +324,6 @@ function_array.each do |func|
 
   end
   assembly_HTML << "\n"
-  # puts assem_code_by_func[func]
-
-
-
-  
 end
 
 
@@ -426,21 +343,3 @@ html_template.gsub!('{assembly_code_placeholder}', assembly_HTML)
 File.open(html_file, 'w') do |file|
   file.puts html_template
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
