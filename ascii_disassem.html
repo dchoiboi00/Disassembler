@@ -228,8 +228,154 @@
           <td></td>
           <td style="overflow-x: scroll; vertical-align: top">
             <div id="assembly">
-{top_text_placeholder}
-{assembly_code_placeholder}
+0000000000401196 &lt;show_char&gt;:
+
+<button onclick="aclick('a1','s36')">401196</button><span id="1" sline="s36"> 48 83 ec 08          	sub    $0x8,%rsp</span>
+<button onclick="aclick('a2','s36')">40119a</button><span id="2" sline="s36"> 89 fe                	mov    %edi,%esi</span>
+<button onclick="aclick('a3','s36')">40119c</button><span id="3" sline="s36"> 48 63 c7             	movslq %edi,%rax</span>
+<button onclick="aclick('a4','s36')">40119f</button><span id="4" sline="s36"> 4c 8b 04 c5 60 40 40 	mov    0x404060(,%rax,8),%r8</span>
+<button onclick="aclick('a5','s36')">4011a6</button><span id="5" sline="s36"> 00 </span>
+<button onclick="aclick('a6','s36')">4011a7</button><span id="6" sline="s36"> 89 f9                	mov    %edi,%ecx</span>
+<button onclick="aclick('a7','s36')">4011a9</button><span id="7" sline="s36"> 89 fa                	mov    %edi,%edx</span>
+<button onclick="aclick('a8','s36')">4011ab</button><span id="8" sline="s36"> bf 10 20 40 00       	mov    $0x402010,%edi</span>
+<button onclick="aclick('a9','s36')">4011b0</button><span id="9" sline="s36"> b8 00 00 00 00       	mov    $0x0,%eax</span>
+<button onclick="aclick('a10','s36')">4011b5</button><span id="10" sline="s36"> e8 76 fe ff ff       	call   401030 <printf@plt></span>
+<button onclick="aclick('a11','s36')">4011ba</button><span id="11" sline="s36"> 48 83 c4 08          	add    $0x8,%rsp</span>
+<button onclick="aclick('a12','s36')">4011be</button><span id="12" sline="s36"> c3                   	ret</span>
+
+00000000004011bf &lt;main&gt;:
+
+<button onclick="aclick('a13','s36')">4011bf</button><span id="13" sline="s36"> 41 55                	push   %r13</span>
+<button onclick="aclick('a14','s36')">4011c1</button><span id="14" sline="s36"> 41 54                	push   %r12</span>
+<button onclick="aclick('a15','s36')">4011c3</button><span id="15" sline="s36"> 55                   	push   %rbp</span>
+<button onclick="aclick('a16','s36')">4011c4</button><span id="16" sline="s36"> 53                   	push   %rbx</span>
+<button onclick="aclick('a17','s36')">4011c5</button><span id="17" sline="s36"> 48 81 ec 88 00 00 00 	sub    $0x88,%rsp</span>
+<button onclick="aclick('a18','s36')">4011cc</button><span id="18" sline="s36"> 83 ff 01             	cmp    $0x1,%edi</span>
+<button onclick="aclick('a19','s36')">4011cf</button><span id="19" sline="s36"> 0f 8e 1d 01 00 00    	jle    4012f2 <main+0x133></span>
+<button onclick="aclick('a20','s36')">4011d5</button><span id="20" sline="s36"> 41 89 fd             	mov    %edi,%r13d</span>
+<button onclick="aclick('a21','s36')">4011d8</button><span id="21" sline="s36"> 49 89 f4             	mov    %rsi,%r12</span>
+<button onclick="aclick('a22','s36')">4011db</button><span id="22" sline="s36"> 48 8b 46 08          	mov    0x8(%rsi),%rax</span>
+<button onclick="aclick('a23','s36')">4011df</button><span id="23" sline="s36"> 80 38 2d             	cmpb   $0x2d,(%rax)</span>
+<button onclick="aclick('a24','s36')">4011e2</button><span id="24" sline="s36"> 74 21                	je     401205 <main+0x46></span>
+<button onclick="aclick('a25','s36')">4011e4</button><span id="25" sline="s36"> e8 b7 fe ff ff       	call   4010a0 <__ctype_b_loc@plt></span>
+<button onclick="aclick('a26','s36')">4011e9</button><span id="26" sline="s36"> 48 89 c5             	mov    %rax,%rbp</span>
+<button onclick="aclick('a27','s36')">4011ec</button><span id="27" sline="s36"> 49 8d 5c 24 08       	lea    0x8(%r12),%rbx</span>
+<button onclick="aclick('a28','s36')">4011f1</button><span id="28" sline="s36"> 41 8d 45 fe          	lea    -0x2(%r13),%eax</span>
+<button onclick="aclick('a29','s36')">4011f5</button><span id="29" sline="s36"> 4d 8d 64 c4 10       	lea    0x10(%r12,%rax,8),%r12</span>
+<button onclick="aclick('a30','s36')">4011fa</button><span id="30" sline="s36"> 41 bd 10 00 00 00    	mov    $0x10,%r13d</span>
+<button onclick="aclick('a31','s36')">401200</button><span id="31" sline="s36"> e9 9c 00 00 00       	jmp    4012a1 <main+0xe2></span>
+<button onclick="aclick('a32','s36')">401205</button><span id="32" sline="s36"> bb 00 00 00 00       	mov    $0x0,%ebx</span>
+<button onclick="aclick('a33','s36')">40120a</button><span id="33" sline="s36"> 89 df                	mov    %ebx,%edi</span>
+<button onclick="aclick('a34','s36')">40120c</button><span id="34" sline="s36"> e8 85 ff ff ff       	call   401196 <show_char></span>
+<button onclick="aclick('a35','s36')">401211</button><span id="35" sline="s36"> 83 c3 01             	add    $0x1,%ebx</span>
+<button onclick="aclick('a36','s36')">401214</button><span id="36" sline="s36"> 81 fb 80 00 00 00    	cmp    $0x80,%ebx</span>
+<button onclick="aclick('a37','s36')">40121a</button><span id="37" sline="s36"> 75 ee                	jne    40120a <main+0x4b></span>
+<button onclick="aclick('a38','s36')">40121c</button><span id="38" sline="s36"> e9 62 01 00 00       	jmp    401383 <main+0x1c4></span>
+<button onclick="aclick('a39','s36')">401221</button><span id="39" sline="s36"> 49 8d 71 01          	lea    0x1(%r9),%rsi</span>
+<button onclick="aclick('a40','s36')">401225</button><span id="40" sline="s36"> b9 08 00 00 00       	mov    $0x8,%ecx</span>
+<button onclick="aclick('a41','s36')">40122a</button><span id="41" sline="s36"> 41 80 79 01 78       	cmpb   $0x78,0x1(%r9)</span>
+<button onclick="aclick('a42','s36')">40122f</button><span id="42" sline="s36"> 75 0c                	jne    40123d <main+0x7e></span>
+<button onclick="aclick('a43','s36')">401231</button><span id="43" sline="s36"> eb 03                	jmp    401236 <main+0x77></span>
+<button onclick="aclick('a44','s36')">401233</button><span id="44" sline="s36"> 4c 89 ce             	mov    %r9,%rsi</span>
+<button onclick="aclick('a45','s36')">401236</button><span id="45" sline="s36"> 48 83 c6 01          	add    $0x1,%rsi</span>
+<button onclick="aclick('a46','s36')">40123a</button><span id="46" sline="s36"> 44 89 e9             	mov    %r13d,%ecx</span>
+<button onclick="aclick('a47','s36')">40123d</button><span id="47" sline="s36"> 4c 8b 45 00          	mov    0x0(%rbp),%r8</span>
+<button onclick="aclick('a48','s36')">401241</button><span id="48" sline="s36"> bf 00 00 00 00       	mov    $0x0,%edi</span>
+<button onclick="aclick('a49','s36')">401246</button><span id="49" sline="s36"> eb 18                	jmp    401260 <main+0xa1></span>
+<button onclick="aclick('a50','s36')">401248</button><span id="50" sline="s36"> f6 c4 01             	test   $0x1,%ah</span>
+<button onclick="aclick('a51','s36')">40124b</button><span id="51" sline="s36"> 74 31                	je     40127e <main+0xbf></span>
+<button onclick="aclick('a52','s36')">40124d</button><span id="52" sline="s36"> 0f be c2             	movsbl %dl,%eax</span>
+<button onclick="aclick('a53','s36')">401250</button><span id="53" sline="s36"> 83 e8 37             	sub    $0x37,%eax</span>
+<button onclick="aclick('a54','s36')">401253</button><span id="54" sline="s36"> 39 c8                	cmp    %ecx,%eax</span>
+<button onclick="aclick('a55','s36')">401255</button><span id="55" sline="s36"> 7f 2f                	jg     401286 <main+0xc7></span>
+<button onclick="aclick('a56','s36')">401257</button><span id="56" sline="s36"> 0f af f9             	imul   %ecx,%edi</span>
+<button onclick="aclick('a57','s36')">40125a</button><span id="57" sline="s36"> 01 c7                	add    %eax,%edi</span>
+<button onclick="aclick('a58','s36')">40125c</button><span id="58" sline="s36"> 48 83 c6 01          	add    $0x1,%rsi</span>
+<button onclick="aclick('a59','s36')">401260</button><span id="59" sline="s36"> 0f b6 16             	movzbl (%rsi),%edx</span>
+<button onclick="aclick('a60','s36')">401263</button><span id="60" sline="s36"> 48 0f be c2          	movsbq %dl,%rax</span>
+<button onclick="aclick('a61','s36')">401267</button><span id="61" sline="s36"> 41 0f b7 04 40       	movzwl (%r8,%rax,2),%eax</span>
+<button onclick="aclick('a62','s36')">40126c</button><span id="62" sline="s36"> f6 c4 10             	test   $0x10,%ah</span>
+<button onclick="aclick('a63','s36')">40126f</button><span id="63" sline="s36"> 74 15                	je     401286 <main+0xc7></span>
+<button onclick="aclick('a64','s36')">401271</button><span id="64" sline="s36"> f6 c4 08             	test   $0x8,%ah</span>
+<button onclick="aclick('a65','s36')">401274</button><span id="65" sline="s36"> 74 d2                	je     401248 <main+0x89></span>
+<button onclick="aclick('a66','s36')">401276</button><span id="66" sline="s36"> 0f be c2             	movsbl %dl,%eax</span>
+<button onclick="aclick('a67','s36')">401279</button><span id="67" sline="s36"> 83 e8 30             	sub    $0x30,%eax</span>
+<button onclick="aclick('a68','s36')">40127c</button><span id="68" sline="s36"> eb d5                	jmp    401253 <main+0x94></span>
+<button onclick="aclick('a69','s36')">40127e</button><span id="69" sline="s36"> 0f be c2             	movsbl %dl,%eax</span>
+<button onclick="aclick('a70','s36')">401281</button><span id="70" sline="s36"> 83 e8 57             	sub    $0x57,%eax</span>
+<button onclick="aclick('a71','s36')">401284</button><span id="71" sline="s36"> eb cd                	jmp    401253 <main+0x94></span>
+<button onclick="aclick('a72','s36')">401286</button><span id="72" sline="s36"> 84 d2                	test   %dl,%dl</span>
+<button onclick="aclick('a73','s36')">401288</button><span id="73" sline="s36"> 75 3b                	jne    4012c5 <main+0x106></span>
+<button onclick="aclick('a74','s36')">40128a</button><span id="74" sline="s36"> 83 ff 7f             	cmp    $0x7f,%edi</span>
+<button onclick="aclick('a75','s36')">40128d</button><span id="75" sline="s36"> 7f 4f                	jg     4012de <main+0x11f></span>
+<button onclick="aclick('a76','s36')">40128f</button><span id="76" sline="s36"> e8 02 ff ff ff       	call   401196 <show_char></span>
+<button onclick="aclick('a77','s36')">401294</button><span id="77" sline="s36"> 48 83 c3 08          	add    $0x8,%rbx</span>
+<button onclick="aclick('a78','s36')">401298</button><span id="78" sline="s36"> 4c 39 e3             	cmp    %r12,%rbx</span>
+<button onclick="aclick('a79','s36')">40129b</button><span id="79" sline="s36"> 0f 84 e2 00 00 00    	je     401383 <main+0x1c4></span>
+<button onclick="aclick('a80','s36')">4012a1</button><span id="80" sline="s36"> 4c 8b 0b             	mov    (%rbx),%r9</span>
+<button onclick="aclick('a81','s36')">4012a4</button><span id="81" sline="s36"> 41 0f b6 01          	movzbl (%r9),%eax</span>
+<button onclick="aclick('a82','s36')">4012a8</button><span id="82" sline="s36"> 3c 30                	cmp    $0x30,%al</span>
+<button onclick="aclick('a83','s36')">4012aa</button><span id="83" sline="s36"> 0f 84 71 ff ff ff    	je     401221 <main+0x62></span>
+<button onclick="aclick('a84','s36')">4012b0</button><span id="84" sline="s36"> 3c 78                	cmp    $0x78,%al</span>
+<button onclick="aclick('a85','s36')">4012b2</button><span id="85" sline="s36"> 0f 84 7b ff ff ff    	je     401233 <main+0x74></span>
+<button onclick="aclick('a86','s36')">4012b8</button><span id="86" sline="s36"> 4c 89 ce             	mov    %r9,%rsi</span>
+<button onclick="aclick('a87','s36')">4012bb</button><span id="87" sline="s36"> b9 0a 00 00 00       	mov    $0xa,%ecx</span>
+<button onclick="aclick('a88','s36')">4012c0</button><span id="88" sline="s36"> e9 78 ff ff ff       	jmp    40123d <main+0x7e></span>
+<button onclick="aclick('a89','s36')">4012c5</button><span id="89" sline="s36"> bf 28 20 40 00       	mov    $0x402028,%edi</span>
+<button onclick="aclick('a90','s36')">4012ca</button><span id="90" sline="s36"> b8 00 00 00 00       	mov    $0x0,%eax</span>
+<button onclick="aclick('a91','s36')">4012cf</button><span id="91" sline="s36"> e8 5c fd ff ff       	call   401030 <printf@plt></span>
+<button onclick="aclick('a92','s36')">4012d4</button><span id="92" sline="s36"> bf 01 00 00 00       	mov    $0x1,%edi</span>
+<button onclick="aclick('a93','s36')">4012d9</button><span id="93" sline="s36"> e8 a2 fd ff ff       	call   401080 <exit@plt></span>
+<button onclick="aclick('a94','s36')">4012de</button><span id="94" sline="s36"> 4c 89 ce             	mov    %r9,%rsi</span>
+<button onclick="aclick('a95','s36')">4012e1</button><span id="95" sline="s36"> bf 2f 20 40 00       	mov    $0x40202f,%edi</span>
+<button onclick="aclick('a96','s36')">4012e6</button><span id="96" sline="s36"> b8 00 00 00 00       	mov    $0x0,%eax</span>
+<button onclick="aclick('a97','s36')">4012eb</button><span id="97" sline="s36"> e8 40 fd ff ff       	call   401030 <printf@plt></span>
+<button onclick="aclick('a98','s36')">4012f0</button><span id="98" sline="s36"> eb a2                	jmp    401294 <main+0xd5></span>
+<button onclick="aclick('a99','s36')">4012f2</button><span id="99" sline="s36"> 48 8d 5c 24 40       	lea    0x40(%rsp),%rbx</span>
+<button onclick="aclick('a100','s36')">4012f7</button><span id="100" sline="s36"> 48 89 de             	mov    %rbx,%rsi</span>
+<button onclick="aclick('a101','s36')">4012fa</button><span id="101" sline="s36"> bf 02 00 00 00       	mov    $0x2,%edi</span>
+<button onclick="aclick('a102','s36')">4012ff</button><span id="102" sline="s36"> e8 5c fd ff ff       	call   401060 <tcgetattr@plt></span>
+<button onclick="aclick('a103','s36')">401304</button><span id="103" sline="s36"> 48 89 e7             	mov    %rsp,%rdi</span>
+<button onclick="aclick('a104','s36')">401307</button><span id="104" sline="s36"> b9 0f 00 00 00       	mov    $0xf,%ecx</span>
+<button onclick="aclick('a105','s36')">40130c</button><span id="105" sline="s36"> 48 89 de             	mov    %rbx,%rsi</span>
+<button onclick="aclick('a106','s36')">40130f</button><span id="106" sline="s36"> f3 a5                	rep movsl %ds:(%rsi),%es:(%rdi)</span>
+<button onclick="aclick('a107','s36')">401311</button><span id="107" sline="s36"> 48 89 e7             	mov    %rsp,%rdi</span>
+<button onclick="aclick('a108','s36')">401314</button><span id="108" sline="s36"> e8 37 fd ff ff       	call   401050 <cfmakeraw@plt></span>
+<button onclick="aclick('a109','s36')">401319</button><span id="109" sline="s36"> 48 89 e2             	mov    %rsp,%rdx</span>
+<button onclick="aclick('a110','s36')">40131c</button><span id="110" sline="s36"> be 00 00 00 00       	mov    $0x0,%esi</span>
+<button onclick="aclick('a111','s36')">401321</button><span id="111" sline="s36"> bf 02 00 00 00       	mov    $0x2,%edi</span>
+<button onclick="aclick('a112','s36')">401326</button><span id="112" sline="s36"> e8 45 fd ff ff       	call   401070 <tcsetattr@plt></span>
+<button onclick="aclick('a113','s36')">40132b</button><span id="113" sline="s36"> 41 bc ff ff ff ff    	mov    $0xffffffff,%r12d</span>
+<button onclick="aclick('a114','s36')">401331</button><span id="114" sline="s36"> bd ff ff ff ff       	mov    $0xffffffff,%ebp</span>
+<button onclick="aclick('a115','s36')">401336</button><span id="115" sline="s36"> eb 1d                	jmp    401355 <main+0x196></span>
+<button onclick="aclick('a116','s36')">401338</button><span id="116" sline="s36"> 89 df                	mov    %ebx,%edi</span>
+<button onclick="aclick('a117','s36')">40133a</button><span id="117" sline="s36"> e8 57 fe ff ff       	call   401196 <show_char></span>
+<button onclick="aclick('a118','s36')">40133f</button><span id="118" sline="s36"> 48 8b 35 1a 31 00 00 	mov    0x311a(%rip),%rsi        # 404460 <stdout@GLIBC_2.2.5></span>
+<button onclick="aclick('a119','s36')">401346</button><span id="119" sline="s36"> bf 0d 00 00 00       	mov    $0xd,%edi</span>
+<button onclick="aclick('a120','s36')">40134b</button><span id="120" sline="s36"> e8 f0 fc ff ff       	call   401040 <putc@plt></span>
+<button onclick="aclick('a121','s36')">401350</button><span id="121" sline="s36"> 41 89 ec             	mov    %ebp,%r12d</span>
+<button onclick="aclick('a122','s36')">401353</button><span id="122" sline="s36"> 89 dd                	mov    %ebx,%ebp</span>
+<button onclick="aclick('a123','s36')">401355</button><span id="123" sline="s36"> 48 8b 3d 14 31 00 00 	mov    0x3114(%rip),%rdi        # 404470 <stdin@GLIBC_2.2.5></span>
+<button onclick="aclick('a124','s36')">40135c</button><span id="124" sline="s36"> e8 2f fd ff ff       	call   401090 <getc@plt></span>
+<button onclick="aclick('a125','s36')">401361</button><span id="125" sline="s36"> 83 e0 7f             	and    $0x7f,%eax</span>
+<button onclick="aclick('a126','s36')">401364</button><span id="126" sline="s36"> 89 c3                	mov    %eax,%ebx</span>
+<button onclick="aclick('a127','s36')">401366</button><span id="127" sline="s36"> 41 39 c4             	cmp    %eax,%r12d</span>
+<button onclick="aclick('a128','s36')">401369</button><span id="128" sline="s36"> 75 cd                	jne    401338 <main+0x179></span>
+<button onclick="aclick('a129','s36')">40136b</button><span id="129" sline="s36"> 39 c5                	cmp    %eax,%ebp</span>
+<button onclick="aclick('a130','s36')">40136d</button><span id="130" sline="s36"> 75 c9                	jne    401338 <main+0x179></span>
+<button onclick="aclick('a131','s36')">40136f</button><span id="131" sline="s36"> 48 8d 54 24 40       	lea    0x40(%rsp),%rdx</span>
+<button onclick="aclick('a132','s36')">401374</button><span id="132" sline="s36"> be 00 00 00 00       	mov    $0x0,%esi</span>
+<button onclick="aclick('a133','s36')">401379</button><span id="133" sline="s36"> bf 02 00 00 00       	mov    $0x2,%edi</span>
+<button onclick="aclick('a134','s36')">40137e</button><span id="134" sline="s36"> e8 ed fc ff ff       	call   401070 <tcsetattr@plt></span>
+<button onclick="aclick('a135','s36')">401383</button><span id="135" sline="s36"> b8 00 00 00 00       	mov    $0x0,%eax</span>
+<button onclick="aclick('a136','s36')">401388</button><span id="136" sline="s36"> 48 81 c4 88 00 00 00 	add    $0x88,%rsp</span>
+<button onclick="aclick('a137','s36')">40138f</button><span id="137" sline="s36"> 5b                   	pop    %rbx</span>
+<button onclick="aclick('a138','s36')">401390</button><span id="138" sline="s36"> 5d                   	pop    %rbp</span>
+<button onclick="aclick('a139','s36')">401391</button><span id="139" sline="s36"> 41 5c                	pop    %r12</span>
+<button onclick="aclick('a140','s36')">401393</button><span id="140" sline="s36"> 41 5d                	pop    %r13</span>
+<button onclick="aclick('a141','s36')">401395</button><span id="141" sline="s36"> c3                   	ret</span>
+
+
             </div>
           </td>
         </tr>

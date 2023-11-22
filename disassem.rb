@@ -151,10 +151,10 @@ File.open("#{objdump_file}", "r") do |file|
 end
 
 # testing, it works!
-function_array.each do |func|
-  puts func
-  puts assem_code_by_func[func]
-end
+# function_array.each do |func|
+#   puts func
+#   puts assem_code_by_func[func]
+# end
 
 # build a1 -> 401235
 # build 401235 -> [a1, code]
@@ -233,7 +233,49 @@ end
 file.close
 
 
+# assembly section inserting
+# do HTML insertion here:
+# For each function_array
 
+  puts "\n\n"
+
+assembly_HTML = ""
+assembly_count = 1
+function_array.each do |func|
+  # insert html element here
+  # puts func
+  puts func.chomp
+  assembly_HTML << "#{func.chomp.gsub!(/</, '&lt;').gsub!(/>/, '&gt;')}\n\n"
+  # puts assem_code_by_func[func]
+  # puts assem_address_to_line_and_code["401196"]
+  
+  # for each line in assem_code_by_func[func]
+  assem_code_by_func[func].each do |line|
+  # split the line into what we need
+  lineArray = line.split
+  # 0 - address  1 - code
+  a_addy = lineArray[0].gsub(/:.*/, '')
+  a_code = assem_address_to_line_and_code[a_addy][1].match(/:\s*(.*)/)&.captures&.first
+  
+  # puts "#{assembly_count} #{a_code}"
+  assembly_HTML << "<button onclick=\"aclick(\'a#{assembly_count}\',\'s36\')\">#{a_addy}</button><span id=\"#{assembly_count}\" sline=\"s36\"> #{a_code}</span>\n"
+  
+  
+
+  
+  # insert html element here
+  # puts "#{assembly_count} #{line}"
+  assembly_count = assembly_count + 1
+
+
+  end
+  assembly_HTML << "\n"
+  # puts assem_code_by_func[func]
+
+
+
+  
+end
 
 
 
@@ -250,7 +292,7 @@ html_template = File.read("template.html")
 # putting stuff in template:
 # replace placeholder from template with what we just came up with
 html_template.gsub!('{source_code_placeholder}', finalSourceCode)
-# html_template.gsub!('{assembly_code_placeholder}', finalAssemblyCode)
+html_template.gsub!('{assembly_code_placeholder}', assembly_HTML)
 
 # open file we created and use the html template we just manipulated.
 
