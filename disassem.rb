@@ -335,6 +335,7 @@ html_template = File.read("template.html")
 
 # putting stuff in template:
 # replace placeholder from template with what we just came up with
+html_template.gsub!('{file_name_placeholder}', program_name)
 html_template.gsub!('{source_code_placeholder}', finalSourceCode)
 html_template.gsub!('{assembly_code_placeholder}', assembly_HTML)
 
