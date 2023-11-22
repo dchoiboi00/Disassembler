@@ -331,7 +331,23 @@ file.each_line do |line|
     end
 
   if number_array.include?(lineNum)
-    finalSourceCode << "<button onclick=\"sclick(\'s#{lineNum}\',\'a1\')\">#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
+
+    # whole array
+    aline_value = ""
+    # find min
+    for_sclick = ""
+    # get a->[], where [] is list of source line a points to
+    
+    sline_to_alines_int_array = sline_to_alines["s#{lineNum}"]
+    
+    sline_to_alines_int_array.each do |element|
+      aline_value << "#{element} "
+    end  
+
+    for_sclick << sline_to_alines_int_array.min
+
+    
+    finalSourceCode << "<button onclick=\"sclick(\'s#{lineNum}\',\'#{for_sclick}\')\">#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"#{aline_value}\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
 
   else 
     finalSourceCode << "<button>#{spacesBeforeNum}#{lineNum}</button> <span id=\"s#{lineNum}\" aline=\"\" style=\"background-color: white;\">#{cleaned_line}</span>\n"
@@ -343,13 +359,6 @@ file.each_line do |line|
 
 end
 file.close
-
-
-# assembly section inserting
-# do HTML insertion here:
-# For each function_array
-
-  puts "\n\n"
 
 assembly_HTML = ""
 assembly_count = 1
@@ -366,19 +375,27 @@ function_array.each do |func|
   # split the line into what we need
   lineArray = line.split
   # 0 - address  1 - code
+
   a_addy = lineArray[0].gsub(/:.*/, '')
   a_code = assem_address_to_line_and_code[a_addy][1].match(/:\s*(.*)/)&.captures&.first
   
+  
+  sline_value = ""
+  for_aclick = ""
+  # get a->[], where [] is list of source line a points to
+  
+  aline_to_slines_int_array = aline_to_slines["a#{assembly_count}"]
+  
+  aline_to_slines_int_array.each do |element|
+    sline_value << "#{element} "
+  end  
+
+  for_aclick << aline_to_slines_int_array.min
+  
   # puts "#{assembly_count} #{a_code}"
-  assembly_HTML << "<button onclick=\"aclick(\'a#{assembly_count}\',\'s36\')\">#{a_addy}</button><span id=\"#{assembly_count}\" sline=\"s36\"> #{a_code}</span>\n"
-  
-  
+  assembly_HTML << "<button onclick=\"aclick(\'a#{assembly_count}\',\'#{for_aclick}\')\">#{a_addy}</button><span id=\"a#{assembly_count}\" sline=\"#{sline_value}\"> #{a_code}</span>\n"
 
-  
-  # insert html element here
-  # puts "#{assembly_count} #{line}"
   assembly_count = assembly_count + 1
-
 
   end
   assembly_HTML << "\n"
@@ -389,11 +406,6 @@ function_array.each do |func|
   
 end
 
-
-
-# html_template.gsub!('<%= program_name %>', program_name)
-# html_template.gsub!('<%= obj_dump_result %>', File.read(objdump_file))
-# html_template.gsub!('<%= dwarfdump_result %>', File.read(dwarfdump_file))
 
 # create a corresponding html file
 html_file = "#{program_name}_disassem.html"
@@ -412,7 +424,7 @@ File.open(html_file, 'w') do |file|
   file.puts html_template
 end
 
-# 
+
 
 
 
