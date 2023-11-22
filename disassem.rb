@@ -319,7 +319,10 @@ finalSourceCode = ""
 file.each_line do |line|
   # puts "#{lineNum}#{line}"
   # remove new line from line
-  cleaned_line = line.chomp 
+  no_space_line = line.chomp
+  cleaned_line = no_space_line&.gsub(/</, '&lt;')&.gsub(/>/, '&gt;')
+
+  
 
   spacesBeforeNum =
     if lineNum < 10

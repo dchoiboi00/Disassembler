@@ -126,11 +126,11 @@
 <button>&nbsp;&nbsp;6</button> <span id="s6" aline="" style="background-color: white;">** To exit, push the same key three times in a row.</span>
 <button>&nbsp;&nbsp;7</button> <span id="s7" aline="" style="background-color: white;">*/</span>
 <button>&nbsp;&nbsp;8</button> <span id="s8" aline="" style="background-color: white;"></span>
-<button>&nbsp;&nbsp;9</button> <span id="s9" aline="" style="background-color: white;">#include <stdlib.h></span>
-<button>&nbsp;10</button> <span id="s10" aline="" style="background-color: white;">#include <stdio.h></span>
-<button>&nbsp;11</button> <span id="s11" aline="" style="background-color: white;">#include <termios.h></span>
-<button>&nbsp;12</button> <span id="s12" aline="" style="background-color: white;">#include <unistd.h></span>
-<button>&nbsp;13</button> <span id="s13" aline="" style="background-color: white;">#include <ctype.h></span>
+<button>&nbsp;&nbsp;9</button> <span id="s9" aline="" style="background-color: white;">#include &lt;stdlib.h&gt;</span>
+<button>&nbsp;10</button> <span id="s10" aline="" style="background-color: white;">#include &lt;stdio.h&gt;</span>
+<button>&nbsp;11</button> <span id="s11" aline="" style="background-color: white;">#include &lt;termios.h&gt;</span>
+<button>&nbsp;12</button> <span id="s12" aline="" style="background-color: white;">#include &lt;unistd.h&gt;</span>
+<button>&nbsp;13</button> <span id="s13" aline="" style="background-color: white;">#include &lt;ctype.h&gt;</span>
 <button>&nbsp;14</button> <span id="s14" aline="" style="background-color: white;"></span>
 <button>&nbsp;15</button> <span id="s15" aline="" style="background-color: white;">char *value[] = {</span>
 <button>&nbsp;16</button> <span id="s16" aline="" style="background-color: white;">    "nul   ^@", "soh   ^A", "stx   ^B", "etx   ^C", "eot   ^D", "enq   ^E", "ack   ^F", "bel   ^G",</span>
@@ -142,7 +142,7 @@
 <button>&nbsp;22</button> <span id="s22" aline="" style="background-color: white;">    "sp", "!", "\"", "#", "$", "%", "&", "'",</span>
 <button>&nbsp;23</button> <span id="s23" aline="" style="background-color: white;">    "(", ")", "*", "+", ",", "-", ".", "/",</span>
 <button>&nbsp;24</button> <span id="s24" aline="" style="background-color: white;">    "0", "1", "2", "3", "4", "5", "6", "7",</span>
-<button>&nbsp;25</button> <span id="s25" aline="" style="background-color: white;">    "8", "9", ":", ";", "<", "=", ">", "?",</span>
+<button>&nbsp;25</button> <span id="s25" aline="" style="background-color: white;">    "8", "9", ":", ";", "&lt;", "=", "&gt;", "?",</span>
 <button>&nbsp;26</button> <span id="s26" aline="" style="background-color: white;">    "@", "A", "B", "C", "D", "E", "F", "G",</span>
 <button>&nbsp;27</button> <span id="s27" aline="" style="background-color: white;">    "H", "I", "J", "K", "L", "M", "N", "O",</span>
 <button>&nbsp;28</button> <span id="s28" aline="" style="background-color: white;">    "P", "Q", "R", "S", "T", "U", "V", "W",</span>
@@ -161,12 +161,12 @@
 <button onclick="sclick('s41','a18')">&nbsp;41</button> <span id="s41" aline="a18 " style="background-color: white;">    struct termios orig, new;</span>
 <button onclick="sclick('s42','a18')">&nbsp;42</button> <span id="s42" aline="a18 " style="background-color: white;">    int base, current, last, lastlast;</span>
 <button onclick="sclick('s43','a113')">&nbsp;43</button> <span id="s43" aline="a18 a113 a114 " style="background-color: white;">    current = last = lastlast = -1;</span>
-<button onclick="sclick('s44','a18')">&nbsp;44</button> <span id="s44" aline="a18 a19 a20 a21 " style="background-color: white;">    if (argc > 1) {</span>
+<button onclick="sclick('s44','a18')">&nbsp;44</button> <span id="s44" aline="a18 a19 a20 a21 " style="background-color: white;">    if (argc &gt; 1) {</span>
 <button onclick="sclick('s45','a22')">&nbsp;45</button> <span id="s45" aline="a22 a23 a24 " style="background-color: white;">        if (*argv[1] == '-') {</span>
-<button onclick="sclick('s46','a32')">&nbsp;46</button> <span id="s46" aline="a32 a35 a36 a37 a38 " style="background-color: white;">            for (current = 0; current <= 127; current++)</span>
+<button onclick="sclick('s46','a32')">&nbsp;46</button> <span id="s46" aline="a32 a35 a36 a37 a38 " style="background-color: white;">            for (current = 0; current &lt;= 127; current++)</span>
 <button onclick="sclick('s47','a33')">&nbsp;47</button> <span id="s47" aline="a33 a34 " style="background-color: white;">            show_char(current);</span>
 <button>&nbsp;48</button> <span id="s48" aline="" style="background-color: white;">        } else {</span>
-<button onclick="sclick('s49','a77')">&nbsp;49</button> <span id="s49" aline="a77 a78 a79 " style="background-color: white;">            for (int i = 1; i < argc; i++) {</span>
+<button onclick="sclick('s49','a77')">&nbsp;49</button> <span id="s49" aline="a77 a78 a79 " style="background-color: white;">            for (int i = 1; i &lt; argc; i++) {</span>
 <button onclick="sclick('s50','a80')">&nbsp;50</button> <span id="s50" aline="a80 " style="background-color: white;">                char *cp = argv[i];</span>
 <button onclick="sclick('s51','a81')">&nbsp;51</button> <span id="s51" aline="a81 " style="background-color: white;">                current = 0;</span>
 <button onclick="sclick('s52','a44')">&nbsp;52</button> <span id="s52" aline="a44 a81 a82 a83 a84 a85 a86 a87 a88 " style="background-color: white;">                switch (*cp) {</span>
@@ -193,7 +193,7 @@
 <button onclick="sclick('s73','a52')">&nbsp;73</button> <span id="s73" aline="a52 a53 " style="background-color: white;">                        d = *cp - 'A' + 10;</span>
 <button>&nbsp;74</button> <span id="s74" aline="" style="background-color: white;">                    else</span>
 <button onclick="sclick('s75','a69')">&nbsp;75</button> <span id="s75" aline="a69 a70 a71 a72 " style="background-color: white;">                        d = *cp - 'a' + 10;</span>
-<button onclick="sclick('s76','a54')">&nbsp;76</button> <span id="s76" aline="a54 a55 " style="background-color: white;">                    if (d > base)</span>
+<button onclick="sclick('s76','a54')">&nbsp;76</button> <span id="s76" aline="a54 a55 " style="background-color: white;">                    if (d &gt; base)</span>
 <button>&nbsp;77</button> <span id="s77" aline="" style="background-color: white;">                        break;</span>
 <button onclick="sclick('s78','a56')">&nbsp;78</button> <span id="s78" aline="a56 a57 a58 " style="background-color: white;">                    current = base * current + d;</span>
 <button>&nbsp;79</button> <span id="s79" aline="" style="background-color: white;">                }</span>
@@ -201,7 +201,7 @@
 <button onclick="sclick('s81','a89')">&nbsp;81</button> <span id="s81" aline="a89 a90 a91 " style="background-color: white;">                    printf("%s???\n", cp);</span>
 <button onclick="sclick('s82','a92')">&nbsp;82</button> <span id="s82" aline="a92 a93 " style="background-color: white;">                    exit(1);</span>
 <button>&nbsp;83</button> <span id="s83" aline="" style="background-color: white;">                }</span>
-<button onclick="sclick('s84','a74')">&nbsp;84</button> <span id="s84" aline="a74 a75 " style="background-color: white;">                if (current <= 127) {</span>
+<button onclick="sclick('s84','a74')">&nbsp;84</button> <span id="s84" aline="a74 a75 " style="background-color: white;">                if (current &lt;= 127) {</span>
 <button onclick="sclick('s85','a76')">&nbsp;85</button> <span id="s85" aline="a76 a77 " style="background-color: white;">                    show_char(current);</span>
 <button>&nbsp;86</button> <span id="s86" aline="" style="background-color: white;">                }</span>
 <button onclick="sclick('s87','a94')">&nbsp;87</button> <span id="s87" aline="a94 a95 a96 a97 a98 a99 " style="background-color: white;">                else printf("value %s out of range\n", argv[i]);</span>
