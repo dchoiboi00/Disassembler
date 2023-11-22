@@ -125,11 +125,13 @@ dwarf_lines.each do |line|
   end
   if line.split[3] != "1"
     replace_num = line.split[1]
-    line.gsub!(/#{replace_num}/, last_sline)
+    line.gsub!(/\s#{replace_num}/, last_sline)
   end
 end
 
-puts dwarf_lines
+# Testing: replace file 2 line_num columns with previous file 1's line num
+puts "New dwarfdump, replaced file 2 line nums"
+puts dwarf_lines, "\n"
 
 # Find functions
 dwarf_lines.each do |line|
@@ -257,6 +259,7 @@ dwarf_lines.each_with_index do |line, index|
       end
     end
 
+  # If last line
   else
     start_aline = aline[1..-1].to_i + 1
     for i in start_aline..max_aline
@@ -286,7 +289,10 @@ dwarf_lines.each_with_index do |line, index|
 end
 
 # UP TO HERE, MAPPING DONE
-
+puts "Source to assembly mappings"
+puts sline_to_alines
+puts "\nAssembly to source mappings"
+puts aline_to_slines
 
 
 
