@@ -107,12 +107,31 @@ obj.each_line do |line|
   end
 end
 
+# Get lines that we need from dwarfdump
 dwarf_lines = []
 dwarf.each_line do |line|
   if line.match(/^0x/)
-    dwarf_lines.push(line)
+    if line.split[6] != "end_sequence"
+      dwarf_lines.push(line)
+    end
   end
 end
+
+# Change file 2 line_num to most previous file 1
+last_sline = ""
+dwarf_lines.each do |line|
+  if line.split[3] == "1"
+    last_sline = line.split[1]
+  end
+  if line.split[3] != "1"
+    replace_num = line.split[1]
+    line.gsub!(/\s#{replace_num}/, last_sline)
+  end
+end
+
+# Testing: replace file 2 line_num columns with previous file 1's line num
+puts "New dwarfdump, replaced file 2 line nums"
+puts dwarf_lines, "\n"
 
 # Find functions
 dwarf_lines.each do |line|
@@ -170,25 +189,118 @@ function_array.each do |func|
     index = index + 1
   end
 end
+max_aline = index - 1
 
 
-source_to_assembly_map = {}
-assembly_info_map = {}
+aline_to_slines = {}
+sline_to_alines = {}
+prev_sline = ""
+prev_aline = ""
+sline = ""
+aline = ""
 
 # map s36 -> [a1, a2]
 # map a1 -> [s36]
 dwarf_lines.each_with_index do |line, index|
   address = line.split[0][-6..-1]
-  sline = line.split[1]
-  puts address
-  puts sline
+  sline = "s" + line.split[1]
+
+  aline = assem_address_to_line_and_code[address][0]
+
+  # skip if duplicate line
+  if prev_sline == sline && prev_aline == aline
+    next
+  end
+
+  # Store sline -> aline, aline -> sline
+  if sline_to_alines.include?(sline)
+    if !sline_to_alines[sline].include?(aline)
+      sline_to_alines[sline].push(aline)
+    end
+  else
+    sline_to_alines[sline] = [aline]
+  end
   
+  if aline_to_slines.include?(aline)
+    if !aline_to_slines[aline].include?(sline)
+      aline_to_slines[aline].push(sline)
+    end
+  else
+    aline_to_slines[aline] = [sline]
+  end
+  
+  if index != dwarf_lines.length() - 1
+    # Find next sline that is different, add assem addresses to sline up until that address
+    i = 1
+    next_sline = dwarf_lines[index+i]
+    while "s" + next_sline.split[1] == sline
+      i = i + 1
+      if index + i == dwarf_lines.length()
+        break
+      end
+      next_sline = dwarf_lines[index+i]
+    end
+    end_address = next_sline.split[0][-6..-1]
+    
+    # add all assem address up to end_address (non-inclusive)
+    start_aline = aline[1..-1].to_i + 1
+    end_aline = assem_address_to_line_and_code[end_address][0][1..-1].to_i - 1
+    for i in start_aline..end_aline
+      add_aline = "a" + i.to_s
+      # Store sline -> aline, aline -> sline
+      if sline_to_alines.include?(sline)
+        if !sline_to_alines[sline].include?(add_aline)
+          sline_to_alines[sline].push(add_aline)
+        end
+      else
+        sline_to_alines[sline] = [add_aline]
+      end
+      
+      if aline_to_slines.include?(add_aline)
+        if !aline_to_slines[add_aline].include?(sline)
+          aline_to_slines[add_aline].push(sline)
+        end
+      else
+        aline_to_slines[add_aline] = [sline]
+      end
+    end
+
+  # If last line
+  else
+    start_aline = aline[1..-1].to_i + 1
+    for i in start_aline..max_aline
+      add_aline = "a" + i.to_s
+      # Store sline -> aline, aline -> sline
+      if sline_to_alines.include?(sline)
+        if !sline_to_alines[sline].include?(add_aline)
+          sline_to_alines[sline].push(add_aline)
+        end
+      else
+        sline_to_alines[sline] = [add_aline]
+      end
+      
+      if aline_to_slines.include?(add_aline)
+        if !aline_to_slines[add_aline].include?(sline)
+          aline_to_slines[add_aline].push(sline)
+        end
+      else
+        aline_to_slines[add_aline] = [sline]
+      end
+    end
+  end
+
+
+  prev_sline = sline
+  prev_aline = aline
 end
 
-function_array.each do |func|
-  puts func
-  puts assem_address_to_line_and_code["401196"]
-end
+# UP TO HERE, MAPPING DONE
+puts "Source to assembly mappings"
+puts sline_to_alines
+puts "\nAssembly to source mappings"
+puts aline_to_slines
+
+
 
 lenghtOfArray = number_array.length
 # puts "Number Array here: #{number_array} #{lenghtOfArray}"
